@@ -1,0 +1,54 @@
+<!-- Header section -->
+<header class="header-section position-fixed">
+  <div class="container-fluid">
+    <!-- logo -->
+    <div class="site-logo">
+        {% if section.settings.logo_url == blank %}
+        {% assign logo_url = 'logo.png' | asset_img_url %}
+        {% else %}
+        {% assign logo_url = section.settings.logo_url %}
+       {% endif %}
+
+       <img src="{{ logo_url }}" alt="logo" />
+    </div>
+    <!-- responsive -->
+    <div class="nav-switch">
+      <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-right">
+      <a href="cart.html" class="card-bag"
+        ><img src='{{ 'bag.png' | asset_img_url }}' alt="" /><span>2</span></a
+      >
+      <a href="#" class="search"
+        ><img src="{{ 'search.png' | asset_img_url }}" alt=""
+      /></a>
+    </div>
+    <!-- site menu -->
+    <ul class="main-menu">
+        {% for link in linklists.main-menu.links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+         {% endfor %}
+    </ul>
+  </div>
+</header>
+<!-- Header section end -->
+
+
+{% schema %}
+{
+    "name":"Header",
+    "settings":[
+       {
+          "type":"text",
+          "id":"logo_url",
+          "label":"Shop Logo Url"
+       },
+       {
+          "type":"link_list",
+          "id":"menu",
+          "default":"main-menu",
+          "label":"Heading Navigation Menu"
+       }
+    ]
+ }
+{% endschema %}

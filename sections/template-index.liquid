@@ -1,0 +1,92 @@
+<!-- Female section starts -->
+<section class="intro-section spad pb-0">
+  <div class="section-title">
+    <h2>our products</h2>
+    <p>Female Wears</p>
+  </div>
+  <div class="intro-slider">
+    <ul class="slidee">
+      {% if collections.fwomen.products.length == empty %}
+      <h6 class="text-center">No Product</h6>
+      {% endif %} {% for product in collections.women.products limit: 4 %}
+      <li>
+        <div class="intro-item">
+          <figure>
+            <img
+              src="{{ product.featured_image.src | img_url: 'large' }}"
+              alt="{{ product.featured_image.alt | escape }}"
+            />
+          </figure>
+          <div class="product-info">
+            <a href="{{ product.url | within: collection }}"
+              ><h5>{{ product.title }}</h5></a
+            >
+            <p>{{ product.price | money }}</p>
+            {% if product.available %}
+            <a href="#" class="site-btn btn-line">ADD TO CART</a>
+            {% else %}
+            <strong class="text-danger">Sold Out</strong>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+      <p>no matches</p>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="scrollbar">
+      <div class="handle">
+        <div class="mousearea"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Female section end -->
+
+<!-- Male section starts -->
+<section class="product-section spad">
+  <div class="container">
+    <ul class="product-filter controls">
+      <li class="control">Men Wears</li>
+    </ul>
+    <div class="row" id="product-filter">
+      {% if collections.men.products.length == empty%}
+      <h6 class="text-center">No Product</h6>
+      {% endif %} {% for product in collections.men.products limit: 4%}
+      <div class="mix col-lg-3 col-md-6 best">
+        <div class="product-item">
+          <figure>
+            <img
+              src="{{ product.featured_image.src | img_url: 'large' }}"
+              alt="{{ product.featured_image.alt | escape }}"
+            />
+            <div class="pi-meta">
+              <div class="pi-m-left">
+                <img src="img/icons/eye.png" alt="" />
+                <p>Quick view</p>
+              </div>
+              <div class="pi-m-right">
+                <img src="img/icons/heart.png" alt="" />
+                <p>Save</p>
+              </div>
+            </div>
+          </figure>
+          <div class="product-info">
+            <a href="{{ product.url | within: collection }}"
+              ><h6>{{ product.title }}</h6></a
+            >
+            <p>{{ product.price | money }}</p>
+            {% if product.available %}
+            <a href="#" class="site-btn btn-line">ADD TO CART</a>
+            {% else %}
+            <small class="text-danger"><strong>Sold Out</strong></small>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- Male section end -->

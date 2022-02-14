@@ -1,0 +1,107 @@
+<!-- Footer top section	 -->
+<section class="footer-top-section home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-8 col-sm-12">
+                <div class="footer-widget about-widget">
+                    {% if  section.settings.logo_url == empty %}
+                    {% assign  logo_url = 'logo.png' | asset_img_url %}
+                    {% else %}
+                    {% assign logo_url = section.settings.logo_url%}
+                    {%endif %}
+                    <img src="{{ logo_url }}" class="footer-logo" alt="">
+                    <p>{{ section.settings.about_us }}</p>
+                    <div class="cards">
+                        <img src="../assets/images/cards/1.png" alt="">
+                        <img src="../assets/images/cards/2.png" alt="">
+                        <img src="../assets/images/cards/3.png" alt="">
+                        <img src="../assets/images/cards/4.png" alt="">
+                        <img src="../assets/images/cards/5.png"alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="footer-widget">
+                    <h6 class="fw-title">usefull Links</h6>
+                    <ul>
+                        {% for link in linklists.main-menu.links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+         {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Contact</h6>
+                    <div class="text-box">
+                        <p>{{ section.settings.shop_name }}</p>
+                        <p>{{ section.settings.shop_address }}</p>
+                        <p>{{ section.settings.shop_mobile }}</p>
+                        <p>{{ section.settings.shop_email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer top section end -->	
+
+    <!-- Footer section -->
+<footer class="footer-section">
+    <div class="container">
+        <p class="copyright">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with LOVE by <a href="#" target="_blank">Great</a>
+</p>
+    </div>
+</footer>
+<!-- Footer section end -->
+
+
+
+{% schema %}
+{
+    "name":"Footer",
+    "settings":[
+       {
+          "type":"text",
+          "id":"logo_url",
+          "label":"Shop Logo Url"
+          
+       },
+       {
+        "type":"text",
+        "id":"about_us",
+        "label":"About Shop",
+        "default":"Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam fringilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem"
+        
+     },
+       {
+          "type":"text",
+          "id":"shop_name",
+          "default":"The Plaza",
+          "label":"Contact Details"
+       },
+       {
+        "type":"text",
+        "id":"shop_address",
+        "default":"1481 Creekside Lane Avila Beach, CA 93424",
+        "label":"Contact Details"
+     },
+     {
+        "type":"text",
+        "id":"shop_mobile",
+        "default":"+13 345 7953 32453",
+        "label":"Contact Details"
+     },
+     {
+        "type":"text",
+        "id":"shop_email",
+        "default":"office@youremail.com",
+        "label":"Contact Details"
+     }
+    ]
+ }
+
+
+{% endschema %}

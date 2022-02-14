@@ -1,0 +1,46 @@
+<!-- Hero section start -->
+{% assign bg = 'bg.jpg' %}
+<section class="hero-section set-bg" data-setbg="{{ bg | asset_url }}">
+  <div class="hero-slider owl-carousel">
+    <div class="hs-item">
+      <div class="hs-left">
+        <img src="{{ 'slider-img.png' | asset_url }}" alt="" />
+      </div>
+      <div class="hs-right">
+        <div class="hs-content">
+          <div class="price">from ${{ section.settings.hero_price }}</div>
+          <h2><span>{{ section.settings.hero_year }}</span> <br />
+            {{ section.settings.hero_content }}</h2>
+          <a href="" class="site-btn">Shop NOW!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Hero section end -->
+
+{% schema %}
+{
+    "name": "Hero Section",
+    "settings": [
+        {      
+            "type": "text",
+            "id": "hero_price",
+            "label": "Hero Price",
+            "default": "19.78"
+        },
+        {      
+            "type": "text",
+            "id": "hero_year",
+            "label": "Hero Year",
+            "default": "2022"
+        },
+        {      
+            "type": "text",
+            "id": "hero_content",
+            "label": "Hero Content",
+            "default": "summer collection"
+        }
+    ]
+}
+{% endschema %}
